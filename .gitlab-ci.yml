@@ -3,7 +3,6 @@ image: tetraweb/php:7.1
 variables:
   SIMPLETEST_DB: "sqlite://tmp/site.sqlite"
   SIMPLETEST_BASE_URL: "http://127.0.0.1:8080"
-  COMPOSER_EXIT_ON_PATCH_FAILURE: "1"
 
 before_script:
   - php -m
