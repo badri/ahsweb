@@ -1,4 +1,4 @@
-image: tetraweb/php:7.0
+image: tetraweb/php:7.1
 
 variables:
   SIMPLETEST_DB: "sqlite://tmp/site.sqlite"
@@ -12,12 +12,7 @@ before_script:
 build:
   stage: build
   script:
-    #- echo 'max_execution_time = 120' >> drupal.php.ini
-    # - echo 'sendmail_path = /bin/true' >> drupal.php.ini
-    # - phpenv config-add drupal.php.ini
-    # - phpenv rehash
-    # - phpenv config-rm xdebug.ini
-    - composer --verbose install
+    - composer install
     - ls
     - cd web
     - ./../vendor/bin/drush site-install minimal --verbose --yes --db-url=sqlite://tmp/site.sqlite
