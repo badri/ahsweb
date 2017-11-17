@@ -4,6 +4,10 @@ variables:
   SIMPLETEST_DB: "sqlite://tmp/site.sqlite"
   SIMPLETEST_BASE_URL: "http://127.0.0.1:8080"
 
+cache:
+  paths:
+  - vendor/
+
 before_script:
   - php -m
   - docker-php-ext-enable gd zip
@@ -12,15 +16,11 @@ build:
   stage: build
   script:
     - composer install
-    - ls
-    - cd web
-    - ./../vendor/bin/drush site-install minimal --verbose --yes --db-url=sqlite://tmp/site.sqlite
-    - cd ..
-    - sh scripts/ahs/deploy.sh
-    - cd web
-    - ./../vendor/bin/drush runserver http://127.0.0.1:8080 &
-    - sleep 3
 
+phpunit:
+  stage: test
+  script:
+    - php vendor/bin/phpunit -c web/core web/core/tests/Drupal/Tests/Core/Password/PasswordHashingTest.php
   
 #    services:
 #    - tetraweb/mysql
