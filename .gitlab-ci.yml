@@ -20,6 +20,8 @@ build:
 phpunit:
   stage: test
   script:
+    - ls
+    - php vendor/bin/phpunit -c core core/tests/Drupal/Tests/Core/Password/PasswordHashingTest.php
     - php vendor/bin/phpunit -c web/core web/core/tests/Drupal/Tests/Core/Password/PasswordHashingTest.php
   
 #    services:
