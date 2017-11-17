@@ -1,4 +1,4 @@
-image: tetraweb/php:7.0
+image: tetraweb/php:7.1
 
 variables:
   SIMPLETEST_DB: "sqlite://tmp/site.sqlite"
