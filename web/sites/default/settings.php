@@ -24,7 +24,7 @@ $settings['file_scan_ignore_directories'] = [
 // As the settings.php file is not writable during install on Platform.sh (for
 // good reasons), Drupal will refuse to install a profile that is not defined
 // here.
-$settings['install_profile'] = 'minimal';
+$settings['install_profile'] = 'standard';
 
 // The hash_salt should be a unique random value for each application.
 // If left unset, the settings.platformsh.php file will attempt to provide one.
@@ -118,4 +118,14 @@ $config['config_split.config_split.production']['status'] = TRUE;
 // Local settings. These come last so that they can override anything.
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
-}
+}$databases['default']['default'] = array (
+  'database' => 'drupal',
+  'username' => 'drupal',
+  'password' => 'drupal',
+  'prefix' => '',
+  'host' => 'mariadb',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+$settings['hash_salt'] = 'WOidihLLuDn2rJdIpUsVB2eOY94BsyXFnTmahN09f5VQemJ6SnEIlis62L83CbNK7gedUG3XKA';
